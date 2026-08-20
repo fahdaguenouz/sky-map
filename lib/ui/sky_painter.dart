@@ -92,9 +92,6 @@ class SkyPainter extends CustomPainter {
   /// Project alt/az (degrees) to screen coordinates. Returns null if off-screen.
   Offset? _projectAltAz(double altDeg, double azDeg, double pitchRad, double yawRad,
       double cx, double cy, double scale) {
-    // Skip objects well below the horizon
-    if (altDeg < -10) return null;
-
     final double altR = altDeg * pi / 180.0;
     final double azR = azDeg * pi / 180.0;
 
