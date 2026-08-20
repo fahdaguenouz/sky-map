@@ -23,9 +23,9 @@ class SkyMapBloc extends Bloc<SkyMapEvent, SkyMapState> {
   Vector3 _magnetometer = Vector3(1, 0, 0);
 
   // Higher alpha = more responsive, less smoothing.
-  // 0.3 gives a good balance — fast enough to feel instant, smooth enough to avoid jitter.
-  static const double _gravAlpha = 0.3;
-  static const double _magAlpha = 0.15; // magnetometer needs more smoothing (noisier)
+  // We increase this to drastically reduce the "lagging behind" effect.
+  static const double _gravAlpha = 0.8; 
+  static const double _magAlpha = 0.5;
 
   // Publicly accessible pitch/yaw for the painter to read WITHOUT going through BLoC
   // This avoids triggering a full Flutter rebuild every 33ms.
@@ -128,15 +128,15 @@ class SkyMapBloc extends Bloc<SkyMapEvent, SkyMapState> {
         isLoading: false,
       ));
 
-      // 4. Start sensors — listen directly without a timer
-      _accelerometerSubscription = accelerometerEventStream().listen((event) {
+      // 4. Start sensors — request 60Hz update rate from Android
+      _accelerometerSubscription = accelerometerEventStream(samplingPeriod: const Duration(milliseconds: 16)).listen((event) {
         _gravity = Vector3(
           _lerp(_gravity.x, event.x, _gravAlpha),
           _lerp(_gravity.y, event.y, _gravAlpha),
           _lerp(_gravity.z, event.z, _gravAlpha),
         );
       });
-      _magnetometerSubscription = magnetometerEventStream().listen((event) {
+      _magnetometerSubscription = magnetometerEventStream(samplingPeriod: const Duration(milliseconds: 16)).listen((event) {
         _magnetometer = Vector3(
           _lerp(_magnetometer.x, event.x, _magAlpha),
           _lerp(_magnetometer.y, event.y, _magAlpha),
