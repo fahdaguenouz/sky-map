@@ -1,0 +1,63 @@
+{
+  "constellations": [
+    {
+      "name": "Orion",
+      "stars": [
+        {"id": "Betelgeuse", "ra": 5.919, "dec": 7.407},
+        {"id": "Rigel", "ra": 5.242, "dec": -8.201},
+        {"id": "Bellatrix", "ra": 5.418, "dec": 6.349},
+        {"id": "Mintaka", "ra": 5.533, "dec": -0.299},
+        {"id": "Alnilam", "ra": 5.603, "dec": -1.201},
+        {"id": "Alnitak", "ra": 5.679, "dec": -1.942},
+        {"id": "Saiph", "ra": 5.795, "dec": -9.669}
+      ],
+      "lines": [
+        ["Betelgeuse", "Bellatrix"],
+        ["Bellatrix", "Mintaka"],
+        ["Mintaka", "Alnilam"],
+        ["Alnilam", "Alnitak"],
+        ["Alnitak", "Saiph"],
+        ["Saiph", "Rigel"],
+        ["Rigel", "Mintaka"],
+        ["Betelgeuse", "Alnitak"]
+      ]
+    },
+    {
+      "name": "Ursa Major",
+      "stars": [
+        {"id": "Dubhe", "ra": 11.062, "dec": 61.751},
+        {"id": "Merak", "ra": 11.030, "dec": 56.382},
+        {"id": "Phecda", "ra": 11.896, "dec": 53.694},
+        {"id": "Megrez", "ra": 12.257, "dec": 57.032},
+        {"id": "Alioth", "ra": 12.900, "dec": 55.959},
+        {"id": "Mizar", "ra": 13.398, "dec": 54.925},
+        {"id": "Alkaid", "ra": 13.792, "dec": 49.313}
+      ],
+      "lines": [
+        ["Dubhe", "Merak"],
+        ["Merak", "Phecda"],
+        ["Phecda", "Megrez"],
+        ["Megrez", "Dubhe"],
+        ["Megrez", "Alioth"],
+        ["Alioth", "Mizar"],
+        ["Mizar", "Alkaid"]
+      ]
+    },
+    {
+      "name": "Cassiopeia",
+      "stars": [
+        {"id": "Caph", "ra": 0.152, "dec": 59.149},
+        {"id": "Schedar", "ra": 0.675, "dec": 56.537},
+        {"id": "GammaCas", "ra": 0.943, "dec": 60.716},
+        {"id": "Ruchbah", "ra": 1.430, "dec": 60.235},
+        {"id": "Segin", "ra": 1.905, "dec": 63.670}
+      ],
+      "lines": [
+        ["Caph", "Schedar"],
+        ["Schedar", "GammaCas"],
+        ["GammaCas", "Ruchbah"],
+        ["Ruchbah", "Segin"]
+      ]
+    }
+  ]
+}
