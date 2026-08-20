@@ -22,10 +22,11 @@ class SkyMapBloc extends Bloc<SkyMapEvent, SkyMapState> {
   Vector3 _gravity = Vector3(0, 0, -9.8);
   Vector3 _magnetometer = Vector3(1, 0, 0);
 
-  // Higher alpha = more responsive, less smoothing.
-  // We increase this to drastically reduce the "lagging behind" effect.
-  static const double _gravAlpha = 0.8; 
-  static const double _magAlpha = 0.5;
+  // Because we are now updating at 60Hz (16ms), the filter applies much more frequently.
+  // We lower the alpha values to give a ~100-200ms smoothing window, eliminating jitter
+  // while remaining highly responsive compared to the old 5Hz update rate.
+  static const double _gravAlpha = 0.15; 
+  static const double _magAlpha = 0.08;
 
   // Publicly accessible pitch/yaw for the painter to read WITHOUT going through BLoC
   // This avoids triggering a full Flutter rebuild every 33ms.
